@@ -1,0 +1,12 @@
+<h3>Preferences</h3>
+
+<%= simple_form_for current_user do |f| %>
+  <%= f.input :email %>
+  <%= f.input :one_week, :label => "One Week Notice" %>
+  <%= f.input :day_of, :label => "Day Of Notice" %>
+
+  <br>
+
+  <%= f.submit %>
+  <%= link_to "Back", root_url %>
+<% end %>

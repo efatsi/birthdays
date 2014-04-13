@@ -5,6 +5,14 @@ class UsersController < ApplicationController
     @friends = sorted_friends
   end
 
+  def edit
+  end
+
+  def update
+    current_user.update_attributes(params[:user].permit!)
+    redirect_to root_url, :notice => "Preferences updated."
+  end
+
   private
 
   def sorted_friends

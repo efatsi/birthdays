@@ -1,3 +1,7 @@
+<%= link_to "Preferences", edit_user_path %>
+
+<br><br>
+
 <%= simple_form_for :new_friends, :url => friends_path do |f| %>
   <%= f.input :friends,
     :as         => :select,

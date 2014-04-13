@@ -18,3 +18,11 @@
 .current {
   background: #DDD;
 }
+
+form {
+  width: 300px;
+}
+
+input.string {
+  width: 100%;
+}
