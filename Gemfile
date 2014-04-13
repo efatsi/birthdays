@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'fb_graph'
 gem 'awesome_print'
+gem 'simple_form'
+gem 'chosen-rails', '~> 1.1.0'
 
 group :development do
   gem 'pry'
