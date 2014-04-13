@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
     fb_friends.select{|a| a.raw_attributes["id"] == id.to_s}.first.try(:fetch)
   end
 
+  def new_fb_friends
+    fb_friends.reject{|f| f.id.in? friends.pluck(:facebook_id) }
+  end
+
   def fb_friends
     @fb_friends ||= fb_user.friends
   end

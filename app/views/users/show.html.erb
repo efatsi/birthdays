@@ -1,7 +1,7 @@
 <%= simple_form_for :new_friends, :url => friends_path do |f| %>
   <%= f.input :friends,
     :as         => :select,
-    :collection => current_user.fb_friends.map{|f| [f.name, f.raw_attributes["id"]]},
+    :collection => current_user.new_fb_friends.map{|f| [f.name, f.raw_attributes["id"]]},
     :input_html => { :multiple => true }
   %>
 
@@ -10,16 +10,17 @@
 
 <h2>Friends</h2>
 <table style="width:400px">
-<tr>
-  <td></td>
-  <td>Name</td>
-  <td>Birtday</td>
-</tr>
-<% current_user.friends.each do |friend| %>
   <tr>
-    <td><%= image_tag friend.image %></td>
-    <td><%= friend.name %></td>
-    <td><%= friend.birthday %></td>
+    <td></td>
+    <td><%= sortable("name") %></td>
+    <td><%= sortable("birthday") %></td>
   </tr>
-<% end %>
+  <% @friends.each do |friend| %>
+    <tr>
+      <td><%= image_tag friend.image %></td>
+      <td><%= friend.name %></td>
+      <td><%= friend.birthday.strftime("%B %_d") %></td>
+    </tr>
+  <% end %>
 </table>
+
