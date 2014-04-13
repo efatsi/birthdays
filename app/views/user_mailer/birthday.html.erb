@@ -1,0 +1,34 @@
+<p>
+  HEADS UP <%= @user.name.split(" ").first.upcase %>!!
+</p>
+
+
+<% if @week_ofs.any? %>
+  <p>
+    <ul>
+      <% @week_ofs.each do |friend| %>
+        <li>
+          <%= link_to "#{friend.name}'s", friend.facebook_link %> birthday is one week from now on <%= friend.show_birthday %>.
+        </li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
+
+
+<% if @day_ofs.any? %>
+  <p>
+    <ul>
+      <% @day_ofs.each do |friend| %>
+        <li>
+          <%= link_to "#{friend.name}'s", friend.facebook_link %> birthday is today!
+        </li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
+</p>
+
+<p>
+  <b>Goodbye</b>
+</p>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :require_logged_in
 
   def show
     @friends = sorted_friends

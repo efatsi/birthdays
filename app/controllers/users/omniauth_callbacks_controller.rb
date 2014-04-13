@@ -1,11 +1,10 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     # You need to implement the method below in your model (e.g. app/models/user.rb)
-    @user = User.where(omniauth_hash.slice(:provider, :uid)).first_or_create
-
-    @user.update_attributes(credentials)
+    @user = User.where(omniauth_hash.slice(:provider, :uid)).first_or_create(credentials)
 
     if @user.persisted?
+      @user.update_attributes(credentials.slice(:token))
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
     else

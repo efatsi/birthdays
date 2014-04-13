@@ -18,8 +18,8 @@
   <% @friends.each do |friend| %>
     <tr>
       <td><%= image_tag friend.image %></td>
-      <td><%= friend.name %></td>
-      <td><%= friend.birthday.strftime("%B %_d") %></td>
+      <td><%= link_to friend.name, friend.facebook_link %></td>
+      <td><%= friend.show_birthday %></td>
     </tr>
   <% end %>
 </table>

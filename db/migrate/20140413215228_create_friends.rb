@@ -6,6 +6,7 @@ class CreateFriends < ActiveRecord::Migration
       t.date :birthday
       t.string :image
       t.string :facebook_id
+      t.string :facebook_link
 
       t.timestamps
     end

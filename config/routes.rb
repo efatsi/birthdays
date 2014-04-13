@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  root to: "pages#home"
+  root to: "users#show"
 
-  resource :user
+  get "/login"    => "pages#home"
 
   post "/friends" => "friends#create"
+
+  resource :user, :only => [:show, :edit, :update]
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 end

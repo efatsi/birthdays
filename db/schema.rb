@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413215228) do
+ActiveRecord::Schema.define(version: 20140413231430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,13 +22,14 @@ ActiveRecord::Schema.define(version: 20140413215228) do
     t.date     "birthday"
     t.string   "image"
     t.string   "facebook_id"
+    t.string   "facebook_link"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -43,6 +44,8 @@ ActiveRecord::Schema.define(version: 20140413215228) do
     t.string   "name"
     t.string   "image"
     t.string   "token"
+    t.boolean  "one_week",               default: false
+    t.boolean  "day_of",                 default: true
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
