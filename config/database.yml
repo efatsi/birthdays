@@ -1,0 +1,25 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: birthday_development
+  pool: 5
+  username: efatsi
+  password:
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: birthday_test
+  pool: 5
+  username: efatsi
+  password:
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: birthday_production
+  pool: 5
+  username: efatsi
+  password:
