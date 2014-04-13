@@ -14,6 +14,7 @@ gem 'fb_graph'
 gem 'awesome_print'
 gem 'simple_form'
 gem 'chosen-rails', '~> 1.1.0'
+gem 'rails_12factor'
 
 group :development do
   gem 'pry'
