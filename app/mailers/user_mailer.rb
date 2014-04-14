@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  default from: "birthdays@bday-reminder.herokuapp.com"
 
   def birthday(user, week_ofs, day_ofs)
     @user     = user
