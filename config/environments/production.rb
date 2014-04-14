@@ -10,9 +10,19 @@ Rails.application.configure do
   config.assets.version = '1.0'
   config.log_level = :info
 
-  config.action_mailer.default_url_options = { host: 'bday-reminder.herokuapp.com' }
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'heroku.com'
+  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'bday-reminder.herokuapp.com' }
 end
