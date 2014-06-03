@@ -12,18 +12,22 @@
   <%= f.submit "Add friends" %>
 <% end %>
 
+<%= link_to "Add custom friend", new_friend_path %>
+
 <h2>Friends</h2>
 <table style="width:400px">
   <tr>
     <td></td>
     <td><%= sortable("name") %></td>
     <td><%= sortable("birthday") %></td>
+    <td></td>
   </tr>
   <% @friends.each do |friend| %>
     <tr>
       <td><%= image_tag friend.image %></td>
       <td><%= link_to friend.name, friend.facebook_link %></td>
       <td><%= friend.show_birthday %></td>
+      <td><%= link_to "x", friend, :method => :delete, :data => {:confirm => "Are you sure?"} %></td>
     </tr>
   <% end %>
 </table>

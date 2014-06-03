@@ -1,6 +1,14 @@
 class FriendsController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+  end
+
+  def custom_create
+    current_user.friends.create(params[:friend].permit!)
+    redirect_to current_user, :notice => "Friend added!"
+  end
+
   def create
     params["new_friends"]["friends"].reject(&:blank?).each do |friend_id|
       fb_friend = current_user.fb_friend(friend_id)
@@ -13,5 +21,12 @@ class FriendsController < ApplicationController
     end
 
     redirect_to "/user"
+  end
+
+  def destroy
+    friend = Friend.find(params[:id])
+    friend.destroy
+
+    redirect_to :back, :notice => "#{friend.name} removed from your list."
   end
 end
